@@ -1,0 +1,6 @@
+c:\users\joshua cosimo rizzo\documents\visual studio 2015\Projects\KnightBlock\KnightBlock\bin\Debug\KnightBlock.exe.config
+c:\users\joshua cosimo rizzo\documents\visual studio 2015\Projects\KnightBlock\KnightBlock\bin\Debug\KnightBlock.exe
+c:\users\joshua cosimo rizzo\documents\visual studio 2015\Projects\KnightBlock\KnightBlock\bin\Debug\KnightBlock.pdb
+c:\users\joshua cosimo rizzo\documents\visual studio 2015\Projects\KnightBlock\KnightBlock\obj\Debug\KnightBlock.csprojResolveAssemblyReference.cache
+c:\users\joshua cosimo rizzo\documents\visual studio 2015\Projects\KnightBlock\KnightBlock\obj\Debug\KnightBlock.exe
+c:\users\joshua cosimo rizzo\documents\visual studio 2015\Projects\KnightBlock\KnightBlock\obj\Debug\KnightBlock.pdb
