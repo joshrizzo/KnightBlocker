@@ -35,7 +35,7 @@ namespace KnightBlock
             Console.WriteLine("\nPlease enter a starting space Y coordinate...");
             var startingY = int.Parse(Console.ReadLine());
 
-            var startingSpace = board.GetSpace(startingX, startingY);
+            var startingSpace = board.GetSpace(startingX - 1, startingY - 1);
 
             Console.WriteLine("\nPlease enter an ending space X coordinate...");
             var endingX = int.Parse(Console.ReadLine());
@@ -43,7 +43,7 @@ namespace KnightBlock
             Console.WriteLine("\nPlease enter an ending space Y coordinate...");
             var endingY = int.Parse(Console.ReadLine());
 
-            var endingSpace = board.GetSpace(endingX, endingY);
+            var endingSpace = board.GetSpace(endingX - 1, endingY - 1);
 
             // Get all the unique paths.
             var visited = new List<ChessSpace>();
@@ -77,13 +77,26 @@ namespace KnightBlock
             {
                 visited.Add(currentSpace);
 
+                var curBelowEnd = currentSpace.X < endingSpace.X;
+                var curLeftOfEnd = currentSpace.Y < endingSpace.Y;
+
                 var unvisitedSpaces = currentSpace.LinkedSpaces
-                    .Where(space => !visited.Contains(space))
+                    .Where(space => !space.HasObstacle && !visited.Contains(space))
                     .ToList();
 
-                var nextSpace = 
-                    unvisitedSpaces.FirstOrDefault(space => space == endingSpace) ?? 
-                    unvisitedSpaces.FirstOrDefault();
+                var nextSpace = unvisitedSpaces.FirstOrDefault(space => space == endingSpace);
+                if (nextSpace == null)
+                {
+                    var orderedSpaces = curBelowEnd ? 
+                        unvisitedSpaces.OrderByDescending(space => space.X) : 
+                        unvisitedSpaces.OrderBy(space => space.X);
+
+                    orderedSpaces = curLeftOfEnd ?
+                        orderedSpaces.OrderByDescending(space => space.Y) :
+                        orderedSpaces.OrderBy(space => space.Y);
+
+                    nextSpace = orderedSpaces.FirstOrDefault();
+                }
 
                 if (nextSpace == null)
                 {

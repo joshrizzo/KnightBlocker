@@ -32,7 +32,7 @@ namespace KnightBlock
                 var chessSpaces = new List<ChessSpace>();
                 for (int y = 0; y < verticalSize; y++)
                 {
-                    chessSpaces.Add(new ChessSpace());
+                    chessSpaces.Add(new ChessSpace() {X = x, Y = y});
                 }
                 bord.Spaces.Add(chessSpaces);
             }
@@ -77,7 +77,7 @@ namespace KnightBlock
             var newY = y + yMove;
             var linkedSpace = bord.GetSpace(newX, newY);
 
-            if (linkedSpace != null && !linkedSpace.HasObstacle)
+            if (linkedSpace != null)
             {
                 space.LinkedSpaces.Add(linkedSpace);
             }
